@@ -1,4 +1,4 @@
-#Descrizione
+#Descrizione progetto Luciano Furore
 
 Il progetto in questione si occupa della creazione di un Client ed un Server, il client si connette al server mediante una porta che gli viene aperta dal server, in seguito alla connessione il client puo' effetturare l'accesso come Anonimo o come utente registrato, nel caso in cui il client affettui l'accesso come Anonimo, il server dara' la possibilita' di : visualizzare la lista di file di tutti gli utenti anonimi e nel caso di scaricarlo; nel caso in cui il client decida di effettuare l'accesso come utente registrato, il server dara' una lista piu ampia di comandi tra cui: la possibilita' di rinominare il nome di un file, cancellare un file e di mandare un file presente sul disco del client al server, ogni utente registrato ha una propria cartella sul server.
 
