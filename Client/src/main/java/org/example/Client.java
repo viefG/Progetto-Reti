@@ -21,23 +21,23 @@ public class Client {
     BufferedReader tastiera;
 
     public void comunicazioneIniziale() { // Questo metodo si occupa di gestire l'accesso del client, se tramite login (utente registrato o tramite anon)
-            System.out.print("Come vuoi accedere? Anon, Login ");
-            String richiesta = scanner.nextLine();
-            String lowerRichiesta=richiesta.toLowerCase(); // Ho utilizzato toLowerCase per evitare problemi quando l'utente scrive lettere maiuscole in modo da gestire anche i caratteri in maiuscolo
-            if (!lowerRichiesta.equals("login") && !lowerRichiesta.equals("anon")){
-                System.out.println("Comando sconosciuto");
-                comunicazioneIniziale();
-            }
-            System.out.println("Invio: " + richiesta);
+        System.out.print("Come vuoi accedere? Anon, Login ");
+        String richiesta = scanner.nextLine();
+        String lowerRichiesta=richiesta.toLowerCase(); // Ho utilizzato toLowerCase per evitare problemi quando l'utente scrive lettere maiuscole in modo da gestire anche i caratteri in maiuscolo
+        if (!lowerRichiesta.equals("login") && !lowerRichiesta.equals("anon")){
+            System.out.println("Comando sconosciuto");
+            comunicazioneIniziale();
+        }
+        System.out.println("Invio: " + richiesta);
 
-            switch (lowerRichiesta){
-                case "login" :
-                    gestisciLogin(richiesta); // Chiama il metodo che gestisce il login come utente registrato (in questo caso come in tutti gli altri si passa anche la richiesta al metodo che poi verra' passata anche al client
-                    break;
-                case "anon" :
-                    gestisciAnon(richiesta);// Chiama il metodo che gestisce il login come anonimo
-                    break;
-            }
+        switch (lowerRichiesta){
+            case "login" :
+                gestisciLogin(richiesta); // Chiama il metodo che gestisce il login come utente registrato (in questo caso come in tutti gli altri si passa anche la richiesta al metodo che poi verra' passata anche al client
+                break;
+            case "anon" :
+                gestisciAnon(richiesta);// Chiama il metodo che gestisce il login come anonimo
+                break;
+        }
     }
 
     public void comunica() { // Questo metodo e' il cuore del client, gestisce tutte le richieste che vanno mandate al server, ogni volta che si vuole fare una nuova richiesta si passa da questo metodo
