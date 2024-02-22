@@ -164,7 +164,7 @@ public class Server { // Classe server
             nomeFile = in.readLine();
             posizione=posizione+"/"+nomeFile;
             if (nomeFile == null || nomeFile.trim().isEmpty()) {
-                out.println("Nome del file non fornito.");
+                out.println("File non trovato");
                 comunica();
             }
         } catch (IOException e) {
@@ -172,10 +172,10 @@ public class Server { // Classe server
         }
 
         File file = new File(posizione);
-        if (!file.exists()) {
+       /* if (!file.exists()) {
             out.println("File non trovato");
             comunica();
-        }
+        } */
 
         try (ServerSocket serverSocketDati = new ServerSocket(0)) { // 0 per selezionare una porta disponibile automaticamente
             int portaDati = serverSocketDati.getLocalPort();

@@ -168,6 +168,7 @@ public class Client {
             out.println(nomeFile);
 
 
+
             int portaDati = Integer.parseInt(in.readLine()); // Aspetta la risposta del server che include la porta per la connessione dati
 
             // Stabilisce una nuova connessione Socket per permettere il trasferimento dei dati tra il client ed il server
