@@ -19,6 +19,8 @@ public class Server { // Classe server
 
     String nomeUtente;
 
+    String posizioneServer= System.getProperty("user.dir");
+
     int root = 5; // Gestisce i permessi tra Utente registrato (vale 2) ed utente Anonimo (vale 0)
 
 
@@ -113,7 +115,8 @@ public class Server { // Classe server
     public void controlloLogin(){ // Questo metodo legge dalla cartella del server: DataBase il nome del file .txt per controllare il nome ed il contenuto del file per controllare la password, se sono entrambi corretti setta il root a 2
         try {
 
-            String posizione="./DataBase/";
+            String posizione=posizioneServer+"/DataBase/";
+
 
             String nome= in.readLine();
             String pass = in.readLine();
@@ -172,10 +175,13 @@ public class Server { // Classe server
         }
 
         File file = new File(posizione);
-       /* if (!file.exists()) {
+        if (!file.exists()) {
             out.println("File non trovato");
             comunica();
-        } */
+        } else {
+            out.println("File trovato");
+            System.out.println("File trovato");
+        }
 
         try (ServerSocket serverSocketDati = new ServerSocket(0)) { // 0 per selezionare una porta disponibile automaticamente
             int portaDati = serverSocketDati.getLocalPort();
@@ -204,6 +210,10 @@ public class Server { // Classe server
             out.println("Inserisci il nome del file che intendi mandare al server");
             String nome=in.readLine();
             posizione=posizione+nome;
+            if (in.readLine().equals("File non trovato")){
+                System.out.println("File non trovato");
+                comunica();
+            }
 
             try (ServerSocket serverSocketDati = new ServerSocket(0)) {
                 int portaDati = serverSocketDati.getLocalPort();
@@ -303,6 +313,7 @@ public class Server { // Classe server
                 comunica();
             } else {
                 out.println("non e' stato possibile eliminare il file");
+                comunica();
             }
         } catch (IOException e){
             System.out.println(e.getMessage());

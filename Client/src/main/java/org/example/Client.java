@@ -20,6 +20,8 @@ public class Client {
 
     BufferedReader tastiera;
 
+    String posizioneServer= System.getProperty("user.dir");
+
     public void comunicazioneIniziale() { // Questo metodo si occupa di gestire l'accesso del client, se tramite login (utente registrato o tramite anon)
         System.out.print("Come vuoi accedere? Anon, Login ");
         String richiesta = scanner.nextLine();
@@ -167,6 +169,11 @@ public class Client {
             posizione=posizione+nomeFile;
             out.println(nomeFile);
 
+            if (in.readLine().equals("File non trovato")){
+                System.out.println("File non trovato");
+                comunica();
+            }
+
 
 
             int portaDati = Integer.parseInt(in.readLine()); // Aspetta la risposta del server che include la porta per la connessione dati
@@ -203,6 +210,13 @@ public class Client {
             String nome=scanner.nextLine();
             posizione=posizione+nome;
             out.println(nome);
+            if (new File(posizione).exists()){
+                out.println("File trovato");
+            } else {
+                out.println("File non trovato");
+                System.out.println("File non trovato");
+                comunica();
+            }
 
 
             int portaDati = Integer.parseInt(in.readLine());
